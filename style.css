@@ -1,0 +1,177 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-color: #f2f7f4;
+    color: #2f3e34;
+}
+
+header {
+    background: linear-gradient(to right, #1e5631, #4c956c);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 12px;
+}
+
+nav ul li a {
+    color: #e8f5e9;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+section {
+    padding: 20px 0;
+    border-bottom: 1px solid #cde5d7;
+}
+
+.gallery img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+video {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 10px;
+    display: block;
+}
+
+/* ===== FORM STYLE ===== */
+
+form {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #d7e8dc;
+    margin-bottom: 25px;
+}
+
+section h3 {
+    color: #1e5631;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* Input umum */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="url"],
+input[type="date"],
+input[type="time"],
+input[type="search"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #b7d3c3;
+    box-sizing: border-box;
+}
+
+/* Fokus */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #4c956c;
+}
+
+/* Tombol */
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* Kirim */
+input[type="submit"] {
+    background-color: #2e7d32;
+    color: white;
+}
+
+/* Reset */
+input[type="reset"] {
+    background-color: #c0392b;
+    color: white;
+}
+
+/* Button biasa */
+input[type="button"] {
+    background-color: #355e3b;
+    color: white;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover {
+    opacity: 0.9;
+}
+
+/* File & Color */
+input[type="file"] {
+    background: #eef7f1;
+    padding: 8px;
+}
+
+input[type="color"] {
+    height: 40px;
+    border: none;
+}
+
+/* Footer */
+footer {
+    background: #1e5631;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    nav ul li {
+        display: block;
+        margin: 8px 0;
+    }
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulir Reservasi Curug Pelangi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>Formulir Reservasi Curug Pelangi</h1>
+<nav>
+<ul>
+<li><a href="index.html">Kembali ke Home</a></li>
+</ul>
+</nav>
+</header>
+
+<main class="container">
+
+<form id="orderForm">
+
+<input type="hidden" name="id_partner" value="CURUG2026">
+
+<section>
+<h3>Data Pengunjung</h3>
+
+<div class="form-group">
+<label>Nama Lengkap:</label>
+<input type="text" name="nama" required>
+</div>
+
+<div class="form-group">
+<label>PIN Keamanan (6 Digit):</label>
+<input type="password" name="pin" pattern="[0-9]{6}" maxlength="6" required>
+</div>
+
+<div class="form-group">
+<label>Email:</label>
+<input type="email" name="email" required>
+</div>
+
+<div class="form-group">
+<label>Nomor WhatsApp:</label>
+<input type="tel" name="telepon">
+</div>
+
+<div class="form-group">
+<label>Alamat:</label>
+<textarea name="alamat" rows="3"></textarea>
+</div>
+</section>
+
+
+<section>
+<h3>Detail Kunjungan</h3>
+
+<div class="form-group">
+<label>Lokasi Kedatangan:</label>
+<select name="lokasi" required>
+<option value="">-- Pilih Lokasi --</option>
+<option>Gerbang Utama</option>
+<option>Meeting point St.Bandung</option>
+<option>Meeting Point Lembang</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Tanggal Kunjungan:</label>
+<input type="date" name="tanggal" required>
+</div>
+
+<div class="form-group">
+<label>Jam Kedatangan:</label>
+<input type="time" name="jam" required>
+</div>
+
+<div class="form-group">
+<label>Jumlah Pengunjung (1-20):</label>
+<input type="number" name="jumlah" min="1" max="20" required>
+</div>
+
+<div class="form-group">
+<label>Link Media Sosial:</label>
+<input type="url" name="sosial">
+</div>
+
+<div class="form-group">
+<label>Warna Seragam Rombongan:</label>
+<input type="color" name="warna">
+</div>
+
+</section>
+
+
+<section>
+<h3>Pembayaran & Tambahan</h3>
+
+<div class="form-group">
+<label>Metode Pembayaran:</label>
+<input type="radio" name="payment" value="Full Payment" required> Full Payment
+<input type="radio" name="payment" value="DP 50%"> DP 50%
+</div>
+
+<div class="form-group">
+<label>Fasilitas Tambahan:</label>
+<input type="checkbox" name="addon" value="Asuransi"> Asuransi
+<input type="checkbox" name="addon" value="Dokumentasi"> Dokumentasi
+</div>
+
+<div class="form-group">
+<label>Upload Scan KTP:</label>
+<input type="file" name="dokumen">
+</div>
+
+</section>
+
+
+<section>
+<input type="button" value="Cek Ketersediaan" onclick="alert('Slot kunjungan tersedia!')">
+<input type="reset" value="Kosongkan Form">
+<br><br>
+<input type="submit" value="Kirim Reservasi">
+</section>
+
+</form>
+
+
+<div id="result" style="margin-top:20px; padding:15px; background:#eef7f1; display:none;">
+<h3>Data Reservasi Berhasil Disimpan</h3>
+<p id="displayData"></p>
+</div>
+
+</main>
+
+
+<script>
+document.getElementById('orderForm').addEventListener('submit', function(event) {
+event.preventDefault();
+
+const formData = new FormData(this);
+const dataObj = {};
+const addons = formData.getAll('addon');
+
+formData.forEach((value, key) => {
+if (key === 'addon') {
+dataObj[key] = addons;
+} else if (value instanceof File) {
+dataObj[key] = value.name ? value.name : "Tidak ada file";
+} else {
+dataObj[key] = value;
+}
+});
+
+localStorage.setItem('reservasiTerakhir', JSON.stringify(dataObj));
+
+let outputHtml = '<ul style="list-style:none; padding:0;">';
+
+for (const [key, value] of Object.entries(dataObj)) {
+outputHtml += `
+<li style="margin-bottom:6px;">
+<strong>${key}:</strong> ${Array.isArray(value) ? value.join(', ') : value}
+</li>`;
+}
+
+outputHtml += '</ul>';
+
+document.getElementById('displayData').innerHTML = outputHtml;
+document.getElementById('result').style.display = 'block';
+
+alert("Halo " + dataObj.nama + ", reservasi kamu sudah tersimpan!");
+});
+</script>
+
+</body>
+</html>
